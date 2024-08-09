@@ -14,7 +14,7 @@ if video_file is not None:
     with open("temp_video.mp4", "wb") as f:
         f.write(video_file.getbuffer())
     
-    # Extract audio from the video file
+    
     if st.button("Extract Audio"):
         video = mp.VideoFileClip("temp_video.mp4")
         audio = video.audio
@@ -29,4 +29,32 @@ if video_file is not None:
                 mime="audio/mpeg"
             )
 
-    
+footer="""<style>
+a:link , a:visited{
+color: white;
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:hover,  a:active {
+color: lavender;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: grey;
+color: white;
+text-align: center;
+}
+</style>
+<div class="footer">
+<p> </p>
+<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/arushi-midha" target="_blank">Arushi Midha</a></p>
+</div>
+"""
+st.markdown(footer,unsafe_allow_html=True)   
