@@ -14,12 +14,16 @@ if video_file is not None:
     with open("temp_video.mp4", "wb") as f:
         f.write(video_file.getbuffer())
     
-    
     if st.button("Extract Audio"):
         video = mp.VideoFileClip("temp_video.mp4")
         audio = video.audio
         audio.write_audiofile("output_audio.mp3")
         
+        st.success("Audio extracted successfully!")
+
+        # Play the extracted audio
+        st.audio("output_audio.mp3", format="audio/mp3")
+
         # Allow user to download the audio file
         with open("output_audio.mp3", "rb") as f:
             st.download_button(
@@ -29,7 +33,8 @@ if video_file is not None:
                 mime="audio/mpeg"
             )
 
-footer="""<style>
+# Footer section
+footer = """<style>
 a:link , a:visited{
 color: white;
 background-color: transparent;
@@ -57,4 +62,4 @@ text-align: center;
 <p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/arushi-midha" target="_blank">Arushi Midha</a></p>
 </div>
 """
-st.markdown(footer,unsafe_allow_html=True)   
+st.markdown(footer, unsafe_allow_html=True)
